@@ -2,7 +2,7 @@ def hi():
   print('hello')
 
 def bye():
- print('you')
+  print('you')
 
 hi()
 bye()
