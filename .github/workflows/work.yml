@@ -1,0 +1,26 @@
+name: test
+on: [push]
+    
+jobs:
+  build:
+    name: test 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🐙 - Taking code from main
+        uses: actions/checkout@v2
+        with:
+          path: deploy
+      
+      - name: Get tag
+        uses: dawidd6/action-get-tag@v1.0.0
+      
+      - name: GH Release
+        uses: softprops/action-gh-release@v0.1.5
+
+      
+      - name: 📝 - Test bash
+        run: |
+          echo "xaaaaaaaaaama "
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
