@@ -35,9 +35,10 @@ jobs:
         git add .
     - name: Commit files
       run: |
-        git config --local user.email "yurilima95@gmail.com"
-        git config --local user.name "yuri-almeid"
-        git commit -m "test" -a
+          git fetch --unshallow origin
+          git config --local user.email "yurilima95@gmail.com"
+          git config --local user.name "yuri-almeid"
+          git commit -m "test" -a
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
