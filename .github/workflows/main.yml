@@ -21,26 +21,23 @@ on: [push]
 #           GITHUB_PASS: ${{ secrets.GHPW }}
           
 jobs:
-  build:
+  report:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-    - name: Create local changes
-      run: |
-        ls > t.txt
-        git status
-        git add .
-    - name: Commit files
-      run: |
-          git fetch --unshallow origin
-          git config --local user.email "yurilima95@gmail.com"
-          git config --local user.name "yuri-almeid"
-          git commit -m "test" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+      - uses: actions/checkout@v2
+      - name: Create report file
+        run: date +%s > report.txt
+      - name: Commit report
+        run: |
+          git config --global user.name 'yuri-almeid'
+          git config --global user.email 'yurilima95@gmail.com'
+          git commit -am "Automated report"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          
+          
+          
+          
+          
