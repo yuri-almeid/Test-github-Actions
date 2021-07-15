@@ -24,18 +24,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-      with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+    - uses: actions/checkout@v2
     - name: Create local changes
       run: |
-        ls
-        zip tl.zip testlinter.py
-        echo ---
-        ls
-        git add .
+        mkdir t
     - name: Commit & Push changes
-      uses: actions-js/push@master
+      uses: actions-js/push@v1.1
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        rebase: true
