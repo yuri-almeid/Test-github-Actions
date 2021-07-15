@@ -32,6 +32,7 @@ jobs:
       run: |
         ls > t.txt
         git status
+        git add .
     - name: Commit files
       run: |
         git config --local user.email "yurilima95@gmail.com"
