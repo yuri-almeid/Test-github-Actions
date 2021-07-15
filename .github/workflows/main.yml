@@ -18,6 +18,7 @@ jobs:
           git commit -m "test"
           git status
           echo test
+          git branch
           git push
         env:
           DEFAULT_BRANCH: main
