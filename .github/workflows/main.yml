@@ -20,7 +20,7 @@ jobs:
           git commit -m "test"
           git status
           echo testr
-          git push
+          git push --set-upstream origin test
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
