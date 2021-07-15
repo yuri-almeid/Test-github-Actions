@@ -8,17 +8,18 @@ jobs:
         uses: actions/checkout@v2
       - name: Create File
         run: |
+          git config --global user.name 'yuri-almeid'
+          git config --global user.email 'yurilima95@gmail.com'
+          git checkout -b test
           ls
           zip tl2.zip testlinter.py
           echo ---
           ls
-          git config --global user.name 'yuri-almeid'
-          git config --global user.email 'yurilima95@gmail.com'
+          
           git add .
           git commit -m "test"
           git status
-          echo test
-          git branch
+          echo testr
           git push
         env:
           DEFAULT_BRANCH: main
