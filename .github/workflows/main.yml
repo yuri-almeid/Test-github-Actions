@@ -1,47 +1,28 @@
 name: Tentando rodar teste automatizado dia 2
 on: [push]
-# jobs:
-#   r:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Check out repository code
-#         uses: actions/checkout@v2
-#       - name: Create File
-#         run: |
-#           ls
-#           zip tl.zip testlinter.py
-#           echo ---
-#           ls
-#           git add .
-#           git commit -m "test"
-#         env:
-#           DEFAULT_BRANCH: main
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           GITHUB_USER: ${{ secrets.GHID }}
-#           GITHUB_PASS: ${{ secrets.GHPW }}
-          
 jobs:
-  report:
+  r:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Create report file
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Create File
         run: |
-          date +%s > report.txt
           ls
-          cat report.txt
-      - name: Commit report
-        run: |
-          git config --global user.name 'yuri-almeid'
-          git config --global user.email 'yurilima95@gmail.com'
+          zip tl2.zip testlinter.py
+          echo ---
+          ls
           git add .
-          git commit -am "Automated report"
-          git remote set-url --push origin https://yuri-almeid:$GITHUB_TOKEN@github.com/yuri-almeid/Test-github-Actions
+          git commit -m "test"
+          git checkout master
           git push
         env:
+          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          GITHUB_USER: ${{ secrets.GHID }}
+          GITHUB_PASS: ${{ secrets.GHPW }}
           
+
           
           
           
