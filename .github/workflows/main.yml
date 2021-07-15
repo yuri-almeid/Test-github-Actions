@@ -26,7 +26,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Create report file
-        run: date +%s > report.txt
+        run: |
+          date +%s > report.txt
+          ls
+          cat report.txt
       - name: Commit report
         run: |
           git config --global user.name 'yuri-almeid'
