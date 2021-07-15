@@ -20,5 +20,5 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILE_NAME: "fileName.txt"
+          FILE_NAME: "${{ github.workspace }}/fileName.txt"
           FILE_DATA: "file content"
