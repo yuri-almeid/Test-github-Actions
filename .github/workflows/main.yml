@@ -30,7 +30,8 @@ jobs:
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
     - name: Create local changes
       run: |
-        mkdir t
+        ls > t.txt
+        git status
     - name: Commit files
       run: |
         git config --local user.email "yurilima95@gmail.com"
