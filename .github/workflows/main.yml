@@ -1,26 +1,41 @@
 name: Tentando rodar teste automatizado dia 2
 on: [push]
+# jobs:
+#   r:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out repository code
+#         uses: actions/checkout@v2
+#       - name: Create File
+#         run: |
+#           ls
+#           zip tl.zip testlinter.py
+#           echo ---
+#           ls
+#           git add .
+#           git commit -m "test"
+#         env:
+#           DEFAULT_BRANCH: main
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           GITHUB_USER: ${{ secrets.GHID }}
+#           GITHUB_PASS: ${{ secrets.GHPW }}
+          
 jobs:
-  r:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - name: Create File
-        run: |
-          ls
-          zip tl.zip testlinter.py
-          echo ---
-          ls
-          git add .
-          git commit -m "test"
-        env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-      - name: Push changes # push the output folder to your repo
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
-
+    - uses: actions/checkout@master
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+    - name: Create local changes
+      run: |
+        ls
+        zip tl.zip testlinter.py
+        echo ---
+        ls
+        git add .
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
