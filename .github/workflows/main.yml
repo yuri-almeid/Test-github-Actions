@@ -1,7 +1,7 @@
 name: Tentando rodar teste automatizado dia 2
 on: [push]
 jobs:
-  roda_essa_joça:
+  r:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
