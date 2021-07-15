@@ -9,7 +9,9 @@ jobs:
       - name: Create File
         run: |
           ls
-          ls ${{ github.workspace }}
+          zip tl.zip testlinter.py
+          echo ---
+          ls
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
