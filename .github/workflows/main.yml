@@ -16,7 +16,8 @@ jobs:
           git config --global user.email 'yurilima95@gmail.com'
           git add .
           git commit -m "test"
-          git checkout master
+          git status
+          echo test
           git push
         env:
           DEFAULT_BRANCH: main
